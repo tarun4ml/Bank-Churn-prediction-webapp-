@@ -1,1 +1,1 @@
-web: gunicorn ChurnPredictionAPI.wsgi
+web: python manage.py collectstatic --no-input; gunicorn ChurnPredictionAPI.wsgi
