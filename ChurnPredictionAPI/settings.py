@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fcpq3#+5_qc8o9^cudt+*h^g3#!bvz@blwvjp-rsi+^p73=7s*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG  = False
+DEBUG  = True
 
 ALLOWED_HOSTS = ['https://bankchurnprediction.herokuapp.com/','.herokuapp.com']
 
