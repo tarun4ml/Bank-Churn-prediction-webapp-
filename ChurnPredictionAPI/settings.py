@@ -134,9 +134,9 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
     #BASE_DIR / 'ChurnPredictionAPI/static/'
-    os.path.join(BASE_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'myAPI/static/'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')#BASE_DIR / 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')#BASE_DIR / 'static'
 
 STATIC_URL = '/static/'
