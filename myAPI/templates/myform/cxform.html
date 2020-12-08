@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+  {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+
+        <title>Churn Prediction</title>
+        <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#563d7c">
+        <style>
+          .asteriskField {
+          display: none;
+          }
+          @font-face {
+  font-family: 'Josefin Sans';
+  font-style:unset;
+  font-weight: 400;
+  src: url({% static 'fonts/josefin-sans-v16-latin-regular.eot'%}); /* IE9 Compat Modes */
+  src: local(''),
+       url({% static 'fonts/josefin-sans-v16-latin-regular.eot?#iefix'%}) format('embedded-opentype'), /* IE6-IE8 */
+       url({% static 'fonts/josefin-sans-v16-latin-regular.woff2'%}) format('woff2'), /* Super Modern Browsers */
+       url({% static 'fonts/josefin-sans-v16-latin-regular.woff'%}) format('woff'), /* Modern Browsers */
+       url({% static 'fonts/josefin-sans-v16-latin-regular.ttf'%}) format('truetype'), /* Safari, Android, iOS */
+       url({% static 'fonts/josefin-sans-v16-latin-regular.svg#JosefinSans'%}) format('svg'); /* Legacy iOS */
+}
+        </style>
+
+
+    </head>
+    <body style = "min-height: 100%; background-image: linear-gradient(to right, #545454, #4b5462); font-family: 'Josefin Sans', sans-serif;">
+      <form action="" method="POST">
+
+      <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-black">
+          <a class="navbar-brand" href="{% url 'home' %}">Churn Prediction</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+              <a class="nav-link" href="https://www.linkedin.com/in/tarun-kumar-singh-984b441b5">LinkedIn</a>
+              <a class="nav-link" href="https://github.com/tarun4ml">GitHub</a>
+            </div>
+          </div>
+        </nav>
+  </header>
+
+  <main role="main">
+    <br />
+    {% if sb == "Submit" %}
+          <div class="alert text-white text-center bg-danger" role="alert"><b> SCROLL DOWN FOR RESULT</b></h2> </div>
+          {% endif %}
+
+    <div style="padding-right: 2%; padding-left: 2%;">
+    <section class="jumbotron shadow-lg" style="border-radius: 10px; background-image: url({% static 'jumbo2000x1333a.png' %}); background-size : cover; background-repeat : no-repeat;">
+      <div class="container text-center shadow-lg rounded" style="word-wrap: break-word; background: rgba(225, 225, 225, 0.2); backdrop-filter: blur(8px);">
+        
+        <h1 class="background double" style="padding-top: 2%; color: #000;"><span><b>Churn Prediction</b></span></h1>
+        <p>
+        <h4 class="background double" style=" color: #000;">Churn prediction is all about predicting whether the member continues the services provided by bank or churn to other bank for his/ her convenience.</h4>
+      </p>
+        <p>
+          <a href="{% url 'about' %}" class="btn btn-outline-warning my-2 my-sm-0 "><b>ABOUT CHURN</b></a>
+        </p>
+        <br />
+      
+      </div>
+      
+    </section>
+  </div>
+
+<div>
+    {% load crispy_forms_tags %}
+    <div class="container text-white" style="width: 75%; font-size: 24px;">
+      
+     {% block content %}
+     {% if sb != "Submit" %}
+        <form method='post'>
+            {% csrf_token %}
+            <h5>Please fill out the details of member :</h5>
+            <br />
+
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+              {{ form.CreditScore|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+              {{ form.Geography|as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.Age|as_crispy_field }}  
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ form.Gender|as_crispy_field }}
+              </div>
+            </div>
+         
+
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.Balance|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-3 mb-0">
+                {{ form.Tenure|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-3 mb-0">
+                {{ form.NumOfProducts|as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6 mb-0">
+                {{ form.EstimatedSalary|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-3 mb-0">
+                {{ form.HasCrCard|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-3 mb-0">
+                {{ form.IsActiveMember|as_crispy_field }}
+              </div>
+            </div>
+            <input type="Submit" name='submit' class="btn btn-success" value="Submit" />
+          </form>
+        </div>
+      </div>
+      <br />
+      {% endif %}
+      {% endblock %}
+      {% block result %}
+      <div>
+        <div class="container text-white" style="width: 70%;">   
+        <h4>
+        {% if messages %}
+        {% for message in messages %}
+        <div {% if messages.tags %} class =" {{ message.tags  }} " {% endif %}  >
+       <center>   
+      <output>
+        
+         <div class="alert alert-dark fade show shadow" role="alert"> {{ message }} </div>
+        
+      </output>
+      </center>
+    </div>
+        {% endfor %}
+        {% endif %}
+        </h4>
+         </div>
+     
+        </div>
+        <div class="container text-white" style="width: 50%;">
+        {% if sb == "Submit" %}
+        <p><h4>Entered details of customer : </h4></p>
+        <table class="table table-stripped table-sm text-white">
+        <tr>
+          <th scope="row">Credit Score</th>
+          <td>{{ CreditScore }}</td>
+          
+        </tr>
+        <tr>
+          <th scope="row">Geography</th>
+          <td>{{ Geography }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Gender</th>
+          <td>{{ Gender }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Age</th>
+          <td>{{ Age }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Tenure</th>
+          <td>{{ Tenure }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Balance amount</th>
+          <td>{{ Balance }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Number of product(s)</th>
+          <td>{{ NumOfProducts }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Has Credit Card?</th>
+          <td>{{ HasCrCard }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Is Active Member?</th>
+          <td>{{ IsActiveMember }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Estimated Salary</th>
+          <td>{{ EstimatedSalary }}</td>
+        </tr>
+      </table>
+
+        {% endif %}
+      </div>
+      {% endblock %}
+  </main>
+        <footer class="text-muted">
+          <div class="container text-center">
+            <p class ="text-white" style="padding-bottom: 20px;">© Tarun Kumar Singh {% now "Y"%}</p>
+          </div>
+        </footer>
+                <!-- jQuery and JS bundle w/ Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        </form>
+    </body>
+</html>
