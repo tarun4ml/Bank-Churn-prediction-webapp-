@@ -20,4 +20,4 @@ from myAPI import views
 
 urlpatterns = [
     path('', include('myAPI.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
